@@ -1,0 +1,55 @@
+Toma Andrei 311CB
+FUNCTII:
+
+Write_Pixels - scrie matricea de pixeli iar la fiecare sfarsit de rand pune
+padding daca este nevoie;
+
+Write_Image - am utilizat aceasta fucntie pentru scrierea a cate 3 pixeli;
+
+Pixel_Alb - adauga 3 pixeli albi la imagine;
+
+WriteHeaders - scrie informatiile din strucutrile din bmp_header.h care contin
+informatii despre iamgine;
+
+ReadBMP - functie de tip TPixels ** care returneaza matricea de pixeli citita.
+Citeste fiecare element din headere pe rand, iar dupa muta pointer-ul din 
+fisier la inceputul matricei de pixeli si calculeaza padding-ul (paddingul este
+calculat pana cand numarul de pixeli devine multiplu de 4). Dupa aceea,
+am alocat dinamic matricea de pixeli si am citit pixelii imaginii.
+
+BlackAndWhite - prin aceasta functie am rezolvat primul task. Functia retine
+intr-o variabila BlackWhite catul dintre suma elementelor unui pixel si 3, iar
+dupa aceea scrie cei 3 pixeli modificati in fisier, iar la fiecare sfarsit de
+rand pune padding-ul cu caractere de 0.
+
+NoCrop - prin aceasta functie am rezolvat task-ul 2. Daca imaginea este deja
+patrat (matricea de pixeli este patratica) o afiseaza. Altfel, daca width este
+mai mare decat height mai intai modifica headerul (height=width) si retine 
+intr-o variabila auxiliara vechea valoare a lui height. Adauga pixeli albi pe
+inaltime in numar de (width-height)/2. Mai departe adauga pixelii imaginii si
+dupa adauga (width-height)/2 pixeli albi. In cazul in care diferenta este
+impara se va adauga un rand de pixeli albi in sus si in rest algoritmul este ca
+la cazul in care diferenta este para. Daca height este mai mare decat width
+atunci se vor adauga pixeli albi pe latime. Se va tine j constant si se adauga
+pe latime (height-width)/2 pixeli albi, dupa aceea pixelii imaginii, si dupa
+aceea din nou (height-width)/2 pixeli albi.
+
+freeMatrix - elibereaza matricea
+
+Filter - am alocat dinamic o matrice care va retine matricea de filter. Pentru
+fiecare pixel am initializat suma lui cu 0. Iar dupa am luat 2 foruri care 
+parcurg exteriorul pixelului centrat si aplica formula doar cand nu iese din
+matrice. In final, am verificat daca rezultatul este mai mare decat 255 (caz in
+care am egalat cu 255 rezultatul) sau mai mic decat 0 (caz in care am egalat cu
+0 rezultatul) si dupa aceea am afisat pixelii noi obtinuti si am pus paddingul.
+
+Pooling - am scris headerele imaginii si dupa am calculat in functie de 
+caracterul citit minimul (m) sau maximul (M). Pentru fiecare pixel centrat din 
+matrice am facut maximul pentru fiecare canal R, G, B numai daca nu iesea din
+matricea de pixeli si dupa aceea am scir pixelii calculati. Acelasi lucru am 
+facut si pentru minim cu diferenta ca daca iesea din matricea de pixeli pixelii
+respectivi deveneau nuli.
+
+APEL - functie care apeleaza fiecare task pentru fiecare imagine in parte.
+
+main - apeelurile functiei APEL pentru fiecare imagine in parte.
